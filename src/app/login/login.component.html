@@ -1,0 +1,9 @@
+<div>
+  <input type="text" [(ngModel)]="username" placeholder="Username">
+  <input type="password" [(ngModel)]="password" placeholder="Password">
+  <button (click)="login()">Login</button>
+  <div *ngIf="loginFailed">用户名或者密码错误，请重新登录</div>
+</div>
+<div>
+  <button (click)="modoruIndexPage()">返回主页</button>
+</div>
