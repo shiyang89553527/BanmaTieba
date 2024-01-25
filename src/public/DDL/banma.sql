@@ -1,169 +1,154 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/4/2 17:17:02                            */
+/* Created on:     2024/01/25 16:45:02                            */
 /*==============================================================*/
 
 
-drop table if exists BUYINFO;
+drop table if exists UserInfo;
 
-drop table if exists HUIFU;
+drop table if exists UserPermission;
 
-drop table if exists LIUYN;
+drop table if exists LoginHistory;
 
-drop table if exists NEWS;
+drop table if exists MainBoard;
 
-drop table if exists ORDERFORM;
+drop table if exists SubBoard;
 
-drop table if exists PINGJIA;
+drop table if exists PostContent;
 
-drop table if exists SHOPPING;
+drop table if exists ReplyContent;
 
-drop table if exists USERINFO;
+drop table if exists LikesFavorites;
 
-drop table if exists WAREINFO;
-
-drop table if exists WARETYPE;
 
 /*==============================================================*/
-/* Table: BUYINFO                                               */
+/* Table: UserInfo                                               */
 /*==============================================================*/
-create table BUYINFO
-(
-   BUY_ID               numeric(8,0) not null,
-   BUID                 numeric(8,0),
-   BWNAME               varchar(500),
-   BOID                 varchar(50),
-   COUNT                numeric(8,0),
-   SUMPRICE             numeric(8,0),
-   BPJ                  numeric(8,0),
-   BWID                 numeric(8,0),
-   primary key (BUY_ID)
-);
+CREATE TABLE UserInfo (
+    UserID INT PRIMARY KEY COMMENT '用户识别番号',
+    Username VARCHAR(255) not null COMMENT '用户名',
+    Pwd VARCHAR(255) not null COMMENT '密码',
+    Gender VARCHAR(50) COMMENT '性别',
+    Nickname VARCHAR(255) COMMENT '昵称',
+    Avatar VARCHAR(255) COMMENT '头像',
+    CreationDate DATETIME COMMENT '创建日期',
+    Creator VARCHAR(255) COMMENT '创建者',
+    UpdateDate DATETIME COMMENT '更新日期',
+    Updater VARCHAR(255) COMMENT '更新者'
+)ENGINE=InnoDB COMMENT='用户信息表';
 
 /*==============================================================*/
-/* Table: HUIFU                                                 */
+/* Table: UserPermission                                               */
 /*==============================================================*/
-create table HUIFU
-(
-   HID                  numeric(8,0) not null,
-   LID                  numeric(8,0),
-   HTEXT                varchar(2000),
-   HTIME                varchar(50),
-   primary key (HID)
-);
+CREATE TABLE UserPermission (
+    UserID INT PRIMARY KEY COMMENT '用户识别番号',
+    PostStopFlag int COMMENT '发帖停止flag',
+    ReplyStopFlag int COMMENT '回复停止flag',
+    LoginSuspendFlag int COMMENT '暂停登陆flag',
+    LoginSuspendReason TEXT COMMENT '暂停登陆理由',
+    LoginSuspendEndTime DATETIME COMMENT '暂停截至时间',
+    PermanentLoginStopFlag int COMMENT '永久停止登陆flag',
+    PermanentLoginStopReason TEXT COMMENT '永久停止登陆理由',
+    LoginVerificationFlag int COMMENT '登陆验证flag',
+    ModeratorFlag int COMMENT '版主flag',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期'
+)ENGINE=InnoDB COMMENT='用户权限表';
 
 /*==============================================================*/
-/* Table: LIUYN                                                 */
+/* Table: LoginHistory                                               */
 /*==============================================================*/
-create table LIUYN
-(
-   LID                  numeric(8,0) not null,
-   LTITLE               varchar(50),
-   LTEXT                varchar(2000),
-   LNAME                varchar(50),
-   LTIME                varchar(50),
-   LSTATE               numeric(8,0),
-   LUID                 numeric(8,0),
-   primary key (LID)
-);
+CREATE TABLE LoginHistory (
+    LoginID INT AUTO_INCREMENT COMMENT '登陆番号',
+    UserID INT COMMENT '用户识别番号',
+    LoginTime DATETIME not null COMMENT '登陆时间',
+    LoginLocation VARCHAR(255) not null COMMENT '登陆地',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期',
+    PRIMARY KEY (LoginID, UserID)
+)ENGINE=InnoDB COMMENT='登陆履历表';
 
 /*==============================================================*/
-/* Table: NEWS                                                  */
+/* Table: MainBoard                                               */
 /*==============================================================*/
-create table NEWS
-(
-   NID                  numeric(8,0) not null,
-   NTITLE               varchar(30),
-   NTEXT                varchar(200),
-   NTIME                varchar(20),
-   NTYPE                varchar(20),
-   primary key (NID)
-);
+CREATE TABLE MainBoard (
+    MainBoardID INT PRIMARY KEY COMMENT '主板块ID',
+    BoardName VARCHAR(255) COMMENT '板块名',
+    BoardDescription TEXT COMMENT '板块简介',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期'
+)ENGINE=InnoDB COMMENT='主板块表';
 
 /*==============================================================*/
-/* Table: ORDERFORM                                             */
+/* Table: SubBoard                                               */
 /*==============================================================*/
-create table ORDERFORM
-(
-   ID                   numeric(8,0) not null,
-   STATE                numeric(8,0),
-   TIME                 varchar(90),
-   ADDPRESS             varchar(500),
-   NAME                 varchar(90),
-   NUMID                varchar(50),
-   OUID                 numeric(8,0),
-   primary key (ID)
-);
+CREATE TABLE SubBoard (
+    SubBoardID INT COMMENT '子板块ID',
+    MainBoardID INT COMMENT '主板块ID',
+    BoardName VARCHAR(255) COMMENT '板块名',
+    BoardDescription TEXT COMMENT '板块简介',
+    Moderator VARCHAR(255) COMMENT '版主',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期',
+    PRIMARY KEY (SubBoardID, MainBoardID)
+)ENGINE=InnoDB COMMENT='子板块表';
 
 /*==============================================================*/
-/* Table: PINGJIA                                               */
+/* Table: PostContent                                               */
 /*==============================================================*/
-create table PINGJIA
-(
-   PID                  numeric(8,0) not null,
-   PWID                 numeric(8,0),
-   PTEXT                varchar(2000),
-   PUID                 numeric(8,0),
-   PTIME                varchar(50),
-   primary key (PID)
-);
+CREATE TABLE PostContent (
+    PostID INT COMMENT '帖子ID',
+    PosterUserID INT COMMENT '发帖人识别番号',
+    Title VARCHAR(255) not null COMMENT '标题',
+    Subtitle VARCHAR(255) COMMENT '副标题',
+    Content TEXT not null COMMENT '内容',
+    PostTime DATETIME not null COMMENT '发帖时间',
+    PostReplyStopFlag int COMMENT '帖子回复停止flag',
+    PostReviewFlag int COMMENT '帖子审核flag',
+    PostDeleteFlag int COMMENT '帖子删除flag',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期',
+    PRIMARY KEY (PostID, PosterUserID)
+)ENGINE=InnoDB COMMENT='帖子内容表';
 
 /*==============================================================*/
-/* Table: SHOPPING                                              */
+/* Table: ReplyContent                                               */
 /*==============================================================*/
-create table SHOPPING
-(
-   ID                   numeric(8,0) not null,
-   WIDS                 numeric(8,0),
-   UIDS                 numeric(8,0),
-   primary key (ID)
-);
+CREATE TABLE ReplyContent (
+    PostID INT COMMENT '帖子ID',
+    ReplyID INT COMMENT '回复ID',
+    ReplierUserID INT COMMENT '回复人识别番号',
+    Content TEXT not null COMMENT '内容',
+    ReplyTime DATETIME COMMENT '回复时间',
+    ReplyDeleteFlag int COMMENT '回复删除flag',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期',
+    PRIMARY KEY (PostID, ReplyID, ReplierUserID)
+)ENGINE=InnoDB COMMENT='回复内容表';
 
 /*==============================================================*/
-/* Table: USERINFO                                              */
+/* Table: LikesFavorites                                               */
 /*==============================================================*/
-create table USERINFO
-(
-   USID                 numeric(8,0) not null,
-   UUSER                varchar(20),
-   UPWD                 varchar(20),
-   UNAME                varchar(20) not null,
-   USEX                 varchar(20) not null,
-   UBORN                varchar(20) not null,
-   UPHONE               varchar(20) not null,
-   UEMAIL               varchar(20) not null,
-   UADDPRESS            varchar(20) not null,
-   UIMAGE               varchar(20) not null,
-   primary key (USID)
-);
-
-/*==============================================================*/
-/* Table: WAREINFO                                              */
-/*==============================================================*/
-create table WAREINFO
-(
-   WID                  numeric(8,0) not null,
-   WTID                 numeric(8,0),
-   WNAME                varchar(500),
-   WPRESS               numeric(8,0),
-   WBREED               varchar(100),
-   WTEXT                varchar(2000),
-   WCOUNT               numeric(8,0),
-   WNUM                 varchar(50),
-   WHOT                 numeric(8,0),
-   WIMAGE               varchar(50),
-   WTE                  numeric(8,0),
-   primary key (WID)
-);
-
-/*==============================================================*/
-/* Table: WARETYPE                                              */
-/*==============================================================*/
-create table WARETYPE
-(
-   WID                  numeric(8,0) not null,
-   WNAME                varchar(20),
-   WPID                 numeric(8,0),
-   primary key (WID)
-);
-
+CREATE TABLE LikesFavorites (
+    PostID INT COMMENT '帖子ID',
+    ReplyID INT COMMENT '回复ID',
+    UserID INT COMMENT '用户识别番号',
+    LikeFavoriteType int not null COMMENT '点赞收藏区分',
+    Creator VARCHAR(255) COMMENT '创建者',
+    CreationDate DATETIME COMMENT '创建日期',
+    Updater VARCHAR(255) COMMENT '更新者',
+    UpdateDate DATETIME COMMENT '更新日期',
+    PRIMARY KEY (PostID, ReplyID, UserID)
+)ENGINE=InnoDB COMMENT='点赞收藏表';
