@@ -22,6 +22,10 @@ textarea {
 	color: #818a89;
 }
 
+.gray.foot {
+  text-align: center;
+}
+
 .btn {
 	border-bottom: #2c59aa 1px solid;
 	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5);
