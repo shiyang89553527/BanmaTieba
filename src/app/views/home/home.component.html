@@ -1,0 +1,45 @@
+<!--首页-->
+
+
+<body>
+<app-logo></app-logo>
+
+<!-- 用户信息、登录、注册 -->
+<app-signed></app-signed>
+
+<div>
+  <!-- 主体 -->
+  <div class="t">
+    <table>
+      <tbody>
+      <tr class="tr2 center-align">
+        <td colspan="2">论坛</td>
+        <td class="tr2 td-title">主题数</td>
+        <td class="tr2 last-post">最后发表</td>
+      </tr><!-- 主版块 -->
+      <tr class="tr3">
+        <td class="tr3 father-section" colspan="4">.NET技术</td>
+      </tr><!-- 子版块 -->
+      <tr class="tr3">
+        <td class="indent-size"></td>
+        <th class="left-align">
+          <img src="../../../assets/images/board.gif" alt="" height="29" width="26">
+          <a href="">C#语言</a>
+        </th>
+        <td class="center-align">30</td>
+        <th>
+            <span>
+                <a href="">c#是微软开发的语言</a>
+            </span><br>
+          <span class="gray">用户：accp  | </span>
+          <span class="gray">{{ currentDate | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br/>
+<app-foot></app-foot>
+
+</body>

@@ -1,0 +1,9 @@
+<div *ngIf="!isLoginedIn" class="h">
+  您尚未 <a href="" routerLink="/login">登录</a> &nbsp;|&nbsp; <a href="" routerLink="/register">注册</a> |
+</div>
+
+<div *ngIf="isLoginedIn" class="h">
+  <img class="profile-picture" src="../../assets/images/{{head}}" alt="" width="20" height="20"
+       (click)="navigateToUserProfile()">
+  尊敬的 {{ username }}，欢迎您： 您可以点击头像进入个人主页
+</div>

@@ -1,0 +1,68 @@
+
+<body>
+<app-logo></app-logo>
+
+<!-- 用户信息、登录、注册 -->
+<app-signed></app-signed>
+<!-- 导航 -->
+<div>
+  &gt;&gt;<b><a routerLink="/">论坛首页</a></b>
+</div>
+
+<!-- 用户注册表单 -->
+<div class="form" (click)="checkInputsAndClearError()">
+  <div class="error-msg" *ngIf="errorMsg != ''">{{errorMsg}}</div>
+
+  <label class="label">用户名</label>
+  <input class="input" tabindex="1" [(ngModel)]="username" (blur)="validationUsername()" maxlength="20" name="uName" type="text"> <br>
+
+  <label class="label">密码</label>
+  <input class="input" tabindex="2" [(ngModel)]="password1" (blur)="validationPassword()" maxlength="20" type="password" name="uPass"> <br>
+
+  <label class="label">重复密码</label>
+  <input class="input" tabindex="3" [(ngModel)]="password2" (ngModelChange)="validationPasswordRepeat()" maxlength="20" type="password" name="uPass1"> <br>
+
+  <label class="label">性别</label>
+  女<input value="1" type="radio" name="gender" [(ngModel)]="gender">
+  男<input value="2" checked type="radio" name="gender" [(ngModel)]="gender"> <br>
+
+  <label>请选择头像</label>
+  <div class="avatar">
+    <label for="head1"><img src="../../../assets/images/1.gif" alt=""></label>
+    <input id="head1" value="1.gif" checked type="radio" name="head" [(ngModel)]="head">
+    <label for="head2"><img src="../../../assets/images/2.gif" alt=""></label>
+    <input id="head2" value="2.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head3"><img src="../../../assets/images/3.gif" alt=""></label>
+    <input id="head3" value="3.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head4"><img src="../../../assets/images/4.gif" alt=""></label>
+    <input id="head4" value="4.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head5"><img src="../../../assets/images/5.gif" alt=""></label>
+    <input id="head5" value="5.gif" type="radio" name="head" [(ngModel)]="head"> <br>
+    <label for="head6"><img src="../../../assets/images/6.gif" alt=""></label>
+    <input id="head6" value="6.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head7"><img src="../../../assets/images/7.gif" alt=""></label>
+    <input id="head7" value="7.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head8"><img src="../../../assets/images/8.gif" alt=""></label>
+    <input id="head8" value="8.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head9"><img src="../../../assets/images/9.gif" alt=""></label>
+    <input id="head9" value="9.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head10"><img src="../../../assets/images/10.gif" alt=""></label>
+    <input id="head10" value="10.gif" type="radio" name="head" [(ngModel)]="head"> <br>
+    <label for="head11"><img src="../../../assets/images/11.gif" alt=""></label>
+    <input id="head11" value="11.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head12"><img src="../../../assets/images/12.gif" alt=""></label>
+    <input id="head12" value="12.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head13"><img src="../../../assets/images/13.gif" alt=""></label>
+    <input id="head13" value="13.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head14"><img src="../../../assets/images/14.gif" alt=""></label>
+    <input id="head14" value="14.gif" type="radio" name="head" [(ngModel)]="head">
+    <label for="head15"><img src="../../../assets/images/15.gif" alt=""></label>
+    <input id="head15" value="15.gif" type="radio" name="head" [(ngModel)]="head"> <br>
+  </div>
+
+  <button class="btn" tabindex="4" type="button" (click)="register()">注 册</button>
+  <button class="btn clean" tabindex="4" type="button" (click)="clearForm()">清 空</button>
+</div>
+<!-- 声明 -->
+<app-foot></app-foot>
+</body>

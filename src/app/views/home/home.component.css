@@ -1,0 +1,234 @@
+body {
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: #2f5fa1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+textarea {
+  border-bottom: #a6cbe7 1px solid;
+  border-left: #a6cbe7 1px solid;
+  border-top: #a6cbe7 1px solid;
+  border-right: #a6cbe7 1px solid;
+}
+
+.gray {
+  color: #818a89;
+}
+
+.gray.foot {
+  text-align: center;
+}
+
+.btn {
+  border-bottom: #2c59aa 1px solid;
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#C3DAF5);
+  border-left: #2c59aa 1px solid;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: black;
+  font-size: 12px;
+  border-top: #2c59aa 1px solid;
+  cursor: hand;
+  border-right: #2c59aa 1px solid;
+  padding-top: 2px;
+}
+
+/*.input {*/
+/*  border-bottom: #a6cbe7 1px solid;*/
+/*  border-left: #a6cbe7 1px solid;*/
+/*  font-size: 1em;*/
+/*  vertical-align: middle;*/
+/*  border-top: #a6cbe7 1px solid;*/
+/*  border-right: #a6cbe7 1px solid;*/
+/*  padding: 2px 0 2px 1px;*/
+/*}*/
+
+.t {
+  border-bottom: #a6cbe7 1px solid;
+  border-left: #a6cbe7 1px solid;
+  margin: 0 auto 8px;
+  border-top: #a6cbe7 1px solid;
+  border-right: #a6cbe7 1px solid;
+}
+
+.t table {
+  border-bottom: #fff 1px solid;
+  border-left: #fff 1px solid;
+  margin: 0 auto;
+  width: 99.98%;
+  border-top: #fff 1px solid;
+  border-right: #fff 1px solid;
+}
+
+.h {
+  border-bottom: #dbecf4 4px solid;
+  text-align: left;
+  background: #e0f0f9;
+  color: #004c7d;
+  padding: 5px 7px 3px;
+}
+
+.tr1 th {
+  text-align: left;
+  vertical-align: top;
+  font-weight: normal;
+  border-right: #d4eff7 1px solid;
+  padding: 5px 10px;
+}
+
+.tr1 td {
+  border-bottom: #d4eff7 1px solid;
+  border-left: #d4eff7 0 solid;
+  border-top: #d4eff7 1px solid;
+  border-right: #d4eff7 1px solid;
+}
+
+.tr2 {
+  background: #f3f8ef;
+  color: #659b28;
+}
+
+.tr2 td {
+  border-bottom: #daebcd 1px solid;
+  line-height: 21px;
+  border-top: #a6cbe7 1px solid;
+  padding: 0 6px;
+}
+
+.tr2 th {
+  border-bottom: #daebcd 1px solid;
+  line-height: 21px;
+  border-top: #a6cbe7 1px solid;
+  padding: 0 6px;
+}
+
+.tr2 a {
+  margin: 2px;
+  color: #659b28;
+}
+
+.tr3 td {
+  border-bottom: #d4eff7 1px solid;
+  border-right: #d4eff7 1px solid;
+  padding: 5px 8px;
+}
+
+.tr3 th {
+  border-bottom: #d4eff7 1px solid;
+  text-align: left;
+  font-weight: normal;
+  border-right: #d4eff7 1px solid;
+  padding: 5px 8px;
+}
+
+.tipad {
+  margin: 10px 0 0;
+  border-top: #d4eff7 1px solid;
+  padding: 5px 0 0;
+}
+
+/* 使用CSS控制文本内容居中对齐 */
+.center-align {
+  text-align: center;
+}
+
+/* 使用CSS控制文本内容右对齐 */
+.right-align {
+  text-align: right;
+}
+
+/* 使用CSS控制文本内容左对齐 */
+.left-align {
+  text-align: left;
+}
+
+table {
+  border-spacing: 0;
+  padding: 5px;
+  width: 100%;
+}
+.indent-size {
+  width: 5%;
+}
+
+.tr2.td-title {
+  width: 5%;
+}
+.tr2.last-post {
+  width: 25%;
+}
+
+.logo img {
+  width:123px;
+  height:45px;
+}
+
+.h {
+  font-weight: bolder;
+}
+
+.profile-picture {
+  cursor: pointer;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bolder;
+}
+
+/*.label {*/
+/*  width: 100px; !* 设置标签的宽度，以对齐所有标签 *!*/
+/*  vertical-align: text-bottom; !* 设置垂直对齐方式为 text-bottom *!*/
+/*  margin-right: 10px; !* 可选：添加一些间距以使文本之间有空隙 *!*/
+/*  align-items: baseline; !* 使文本在基线上对齐 *!*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*}*/
+/* label 样式 */
+.label {
+  display: inline-block;
+  width: 100px; /* 根据需要调整 */
+  text-align: right;
+  margin-right: 10px; /* label 和 input 之间的间距 */
+}
+
+/* input 样式 */
+.input {
+  display: inline-block;
+  width: 200px; /* 根据需要调整 */
+}
+
+/* 性别单选按钮的特殊样式 */
+input[type="radio"] {
+  margin-left: 5px; /* 与前面文本的间距 */
+  width: auto; /* 重置宽度，以适应单选按钮的默认样式 */
+}
+
+/* 头像选择部分的特殊样式 */
+.label-avatar {
+  display: block; /* 使得 '请选择头像' 独立成行 */
+  margin-bottom: 10px; /* 与下面内容的间距 */
+}
+
+.avatar {
+  transform: translateX(50px);
+}
+.clean {
+  margin-left: 25px;
+}
+.form {
+  text-align: center;
+  margin-top: 15px;
+}
+.registration-success {
+  text-align: center;
+}
